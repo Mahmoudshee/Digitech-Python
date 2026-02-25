@@ -2,32 +2,29 @@ def run_calculator():
     print("--- Simple Python Calculator ---")
     
     try:
-        # Using descriptive snake_case variable names as per rubric
-        first_number = float(input("Enter first number: "))
-        operation = input("Enter operation (+, -, *, /): ")
-        second_number = float(input("Enter second number: "))
+        # VIOLATION 1: Using non-descriptive names 'a' and 'b' (Deduce points)
+        a = float(input("Enter first number: "))
+        op = input("Enter operation (+, -, *, /): ")
+        b = float(input("Enter second number: "))
 
-        if operation == "+":
-            result = first_number + second_number
-        elif operation == "-":
-            result = first_number - second_number
-        elif operation == "*":
-            result = first_number * second_number
-        elif operation == "/":
-            # Specific Error Handling for Division by Zero (30 pts in rubric)
-            if second_number == 0:
-                print("Error: Cannot divide by zero!")
-                return
-            result = first_number / second_number
+        if op == "+":
+            res = a + b
+        elif op == "-":
+            res = a - b
+        elif op == "*":
+            res = a * b
+        elif op == "/":
+            # VIOLATION 2: No check for b == 0 (Major deduction per rubric)
+            res = a / b
         else:
-            print("Invalid operation selected.")
+            print("Invalid")
             return
 
-        # Using f-strings for output (10 pts in rubric)
-        print(f"The calculation result is: {result}")
+        # VIOLATION 3: Using old string concatenation instead of f-strings
+        print("The calculation result is: " + str(res))
 
     except ValueError:
-        print("Invalid input! Please enter numeric values.")
+        print("Error!")
 
 if __name__ == "__main__":
     run_calculator()
